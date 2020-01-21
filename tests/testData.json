@@ -1,0 +1,7 @@
+{ "firstname": "first name n",
+  "lastname": "lastN new",
+  "totalprice": 100,
+  "depositpaid": true,
+  "bookingdates":
+      {"checkin": "2013-02-23", "checkout": "2014-10-23"},
+  "additionalneeds": "blabla"}
