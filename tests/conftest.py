@@ -5,6 +5,7 @@ from endpoints.getAllbooking import GetAllBooking
 from endpoints.getOneBooking import GetOneBooking
 from endpoints.createBooking import CreateBooking
 from endpoints.updateBooking import UpdateBooking
+from endpoints.bookings import Bookings
 from endpoints.config import Config
 
 @pytest.fixture
@@ -31,6 +32,10 @@ def updateBooking(config,auth):
 @pytest.fixture
 def createBooking(config):
     return CreateBooking(config)
+
+@pytest.fixture
+def bookings(config, auth):
+    return Bookings(config, auth)
 
 @pytest.fixture
 def baseData():
