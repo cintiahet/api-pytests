@@ -1,5 +1,4 @@
 import pytest
-import requests
 import json
 
 
@@ -23,7 +22,7 @@ def test_booking_post(createBooking, baseData):
     assert res.status_code == 200
     assert len(res.json()) > 0
 
-@pytest.mark.parametrize("name_cases", [45654, True, 'asd(&%(/&)(/0987))'])
+@pytest.mark.parametrize("name_cases", [45654, True])
 def test_booking_post_Name_fail(createBooking, baseData, name_cases):
     data = baseData
     data['firstname'] = name_cases
@@ -31,13 +30,4 @@ def test_booking_post_Name_fail(createBooking, baseData, name_cases):
     res = createBooking.post(body)
     assert res.status_code == 500
 
-def test_booking_get_no_class(config, auth):
-    res = requests.get(
-        url=config.BASE_URL + '/booking',
-        headers={
-            'Content-Type': 'application/json'
-        }
-    )
-    assert res.status_code == 200
-    assert len(res.json()) > 0
 
