@@ -1,6 +1,25 @@
 import pytest
 import json
+from endpoints.getAllbooking import GetAllBooking
+from endpoints.getOneBooking import GetOneBooking
+from endpoints.createBooking import CreateBooking
+from endpoints.updateBooking import UpdateBooking
 
+@pytest.fixture
+def getAllBooking(config):
+    return GetAllBooking(config)
+
+@pytest.fixture
+def getOneBooking(config):
+    return GetOneBooking(config)
+
+@pytest.fixture
+def updateBooking(config,auth):
+    return UpdateBooking(config, auth)
+
+@pytest.fixture
+def createBooking(config):
+    return CreateBooking(config)
 
 def test_booking_get_all(getAllBooking):
     res = getAllBooking.get()

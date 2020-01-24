@@ -1,11 +1,6 @@
 import pytest
 import json
 from endpoints.auth import Auth
-from endpoints.getAllbooking import GetAllBooking
-from endpoints.getOneBooking import GetOneBooking
-from endpoints.createBooking import CreateBooking
-from endpoints.updateBooking import UpdateBooking
-from endpoints.bookings import Bookings
 from endpoints.config import Config
 
 @pytest.fixture
@@ -15,27 +10,6 @@ def config():
 @pytest.fixture
 def auth(config):
     return Auth(config)
-
-
-@pytest.fixture
-def getAllBooking(config):
-    return GetAllBooking(config)
-
-@pytest.fixture
-def getOneBooking(config):
-    return GetOneBooking(config)
-
-@pytest.fixture
-def updateBooking(config,auth):
-    return UpdateBooking(config, auth)
-
-@pytest.fixture
-def createBooking(config):
-    return CreateBooking(config)
-
-@pytest.fixture
-def bookings(config, auth):
-    return Bookings(config, auth)
 
 @pytest.fixture
 def baseData():
