@@ -7,3 +7,4 @@ def load_file(filename, route):
 
     with open(absolute_path) as file:
         return file.read()
+

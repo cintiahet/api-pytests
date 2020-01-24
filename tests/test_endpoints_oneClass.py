@@ -1,5 +1,6 @@
 import pytest
 import json
+import allure
 from endpoints.bookings import Bookings
 from .support.assertions import assert_valid_schema
 

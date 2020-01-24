@@ -2,6 +2,7 @@ import pytest
 import json
 from endpoints.auth import Auth
 from endpoints.config import Config
+from .support.utils import load_file
 
 @pytest.fixture
 def config():
@@ -13,9 +14,9 @@ def auth(config):
 
 @pytest.fixture
 def baseData():
-    with open("testData.json") as json_file:
-        data = json.load(json_file)
-        return data
+
+    data = json.loads(load_file('testData.json', 'TestData'))
+    return data
 
 
 
