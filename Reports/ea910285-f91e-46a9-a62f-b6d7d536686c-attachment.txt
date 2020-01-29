@@ -1,0 +1,2 @@
+admin {'token': '6fe82fe23acd618'}
+6fe82fe23acd618

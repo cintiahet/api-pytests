@@ -1,0 +1,2 @@
+admin {'token': 'd42eac40dfac0bc'}
+d42eac40dfac0bc
