@@ -1,5 +1,6 @@
 import pytest
 import json
+import subprocess
 from endpoints.auth import Auth
 from endpoints.config import Config
 from .support.utils import load_file
@@ -17,6 +18,4 @@ def baseData():
 
     data = json.loads(load_file('testData.json', 'TestData'))
     return data
-
-
 

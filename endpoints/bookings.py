@@ -5,22 +5,30 @@ class Bookings:
         self.url = config.BASE_URL
         self.token = auth.token
 
-    def getbookingids(self, headers):
+    def getbookingids(self):
         res = requests.get(
             url=self.url + '/booking',
-            headers=headers)
+            )
         return res
 
-    def getbooking(self, headers, id):
+    def getbookingidsfilter(self, filter):
+        res = requests.get(
+            url=self.url + '/booking?' + filter,
+            )
+        return res
+
+    def getbooking(self, id):
         res = requests.get(
             url=self.url + '/booking/' + id,
-            headers=headers)
+            )
         return res
 
-    def createbooking(self, body, headers):
+    def createbooking(self, body, contenttype):
         res = requests.post(
             url=self.url + '/booking',
-            headers=headers,
+            headers={
+                'Content-Type': contenttype
+            },
             data=body
         )
         return res
@@ -34,5 +42,16 @@ class Bookings:
             url=self.url + '/booking/' + id,
             headers=headers,
             data=body
+        )
+        return res
+
+    def deletebooking(self, id, contenttype):
+        headers = {
+            'Content-Type': contenttype,
+            'Cookie': 'token=' + self.token
+        }
+        res = requests.delete(
+            url=self.url + '/booking/' + id,
+            headers=headers
         )
         return res
