@@ -1,5 +1,6 @@
 import requests
 
+
 class Auth:
     def __init__(self, config):
         self.url = config.BASE_URL + '/auth'
