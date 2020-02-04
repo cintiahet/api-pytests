@@ -4,7 +4,7 @@ import pytest
 from .support.assertions import assert_valid_schema
 
 
-def test_booking_get_AllBookings(config):
+def test_booking_get_all_bookings(config):
     res = requests.get(
         url=config.BASE_URL + '/booking',
         headers={
@@ -15,7 +15,8 @@ def test_booking_get_AllBookings(config):
     assert len(res.json()) > 0
     assert_valid_schema(res.json(), 'bookinglist.json')
 
-def test_booking_get_One(config):
+
+def test_booking_get_one(config):
     res = requests.get(
         url=config.BASE_URL + '/booking/3',
         headers={
@@ -26,7 +27,8 @@ def test_booking_get_One(config):
     assert len(res.json()) > 0
     assert_valid_schema(res.json(), 'booking.json')
 
-def test_booking_get_NotFound(config):
+
+def test_booking_get_not_found(config):
     res = requests.get(
         url=config.BASE_URL + '/booking/someWrongApp',
         headers={
@@ -35,32 +37,34 @@ def test_booking_get_NotFound(config):
     )
     assert res.status_code == 404
 
-def test_booking_post(config, baseData):
-    bodyData = json.dumps(baseData)
+
+def test_booking_post(config, base_data):
+    body_data = json.dumps(base_data)
     headers = {
         'Content-Type': 'application/json'
     }
     res = requests.post(
         url=config.BASE_URL + '/booking',
         headers=headers,
-        data=bodyData
+        data=body_data
     )
 
     assert res.status_code == 200
     assert len(res.json()) > 0
     assert_valid_schema(res.json(), 'newbook.json')
 
+
 @pytest.mark.parametrize("name_cases", [45654, True])
-def test_booking_post_Name_fail(config, baseData, name_cases):
-    data = baseData
+def test_booking_post_name_fail(config, base_data, name_cases):
+    data = base_data
     data['firstname'] = name_cases
-    bodyData = json.dumps(data)
+    body_data = json.dumps(data)
     headers = {
         'Content-Type': 'application/json'
     }
     res = requests.post(
         url=config.BASE_URL + '/booking',
         headers=headers,
-        data=bodyData
+        data=body_data
     )
     assert res.status_code == 500

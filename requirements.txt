@@ -2,4 +2,6 @@ pytest==5.3.4
 requests==2.22.0
 jsonschema==3.2.0
 allure-pytest
-locustio
+locustio==0.13.5
+Faker==4.0.0
+
